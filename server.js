@@ -27,8 +27,8 @@ try {
 }
 
 server.on('message', (msg, rinfo) => {
-    console.log(msg);
-    message = msg.split(",");
+    console.log(msg.toString());
+    message = msg.toString().split(",");
 
     longitude = message[3]/100;
     latitude = message[5]/100;
