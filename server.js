@@ -30,8 +30,8 @@ server.on('message', (msg, rinfo) => {
     console.log(msg.toString());
     message = msg.toString().split(",");
 
-    longitude = message[3];///100;
-    latitude = message[5];///100;
+    longitude = message[2]/100;
+    latitude = message[4]/100;
     db.run(`INSERT INTO data(timestamp,value) VALUES(?,?)`, [ts, msg], function (err) {
         if (err) {
             console.log(err);
