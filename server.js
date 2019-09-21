@@ -24,7 +24,7 @@ try {
 }
 
 server.on('message', (msg, rinfo) => {
-    console.log("hello boo");
+    //console.log("hello boo");
     message = msg;
     db.run(`INSERT INTO data(timestamp,value) VALUES(?,?)`, [ts, msg], function (err) {
         if (err) {
