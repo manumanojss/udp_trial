@@ -5,11 +5,11 @@ var app = express();
 var dgram = require('dgram');
 var server = dgram.createSocket('udp6');
 const sqlite3 = require('sqlite3').verbose();
-let ts = Date.now();
+var ts = Date.now();
 
 var message;
 
-let db = new sqlite3.Database('aerophilia.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
+var db = new sqlite3.Database('aerophilia.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
     (err) => {
         if (err) {
             console.error("error " + err.message);
