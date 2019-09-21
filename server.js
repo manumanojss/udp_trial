@@ -44,8 +44,8 @@ server.on('error', (err) => {
     server.close();
 });
 
-app.set('port', 8080);
-server.bind(8082);
+//app.set('port', 80);
+server.bind(13000);
 
 //parsing data from body
 // var bodyParser = require('body-parser');
@@ -61,6 +61,6 @@ app.get('/', function (req, res) {
     res.render('index.html',{message:message,ts:ts});
 });
 
-app.listen(8080, function () { 
-    console.log("server is running at localhost:8080");
+app.listen(80, function () { 
+    console.log("server is running at localhost:80");
 })
