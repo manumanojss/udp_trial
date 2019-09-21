@@ -27,7 +27,7 @@ try {
 }
 
 server.on('message', (msg, rinfo) => {
-    //console.log("hello boo");
+    console.log(msg);
     message = msg.split(",");
 
     longitude = message[3]/100;
