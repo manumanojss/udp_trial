@@ -2,12 +2,15 @@ var express = require('express');
 
 var app = express();
 
+app.use('/css',express.static(__dirname +'/views/css'));
+
 var dgram = require('dgram');
 var server = dgram.createSocket('udp6');
 const sqlite3 = require('sqlite3').verbose();
 var ts = Date.now();
 
 var message;
+var longitude,latitude;
 
 var db = new sqlite3.Database('aerophilia.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
     (err) => {
@@ -25,7 +28,10 @@ try {
 
 server.on('message', (msg, rinfo) => {
     //console.log("hello boo");
-    message = msg;
+    message = msg.split(",");
+
+    longitude = message[3]/100;
+    latitude = message[5]/100;
     db.run(`INSERT INTO data(timestamp,value) VALUES(?,?)`, [ts, msg], function (err) {
         if (err) {
             console.log(err);
@@ -58,7 +64,10 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 app.get('/', function (req, res) {
-    res.render('index.html',{message:message,ts:ts});
+    res.render('index.html',{longitude:longitude,latitude:latitude});
+});
+app.get('/index2', function (req, res) {
+    res.render('index2.html',{longitude:longitude,latitude:latitude});
 });
 
 app.listen(80, function () { 

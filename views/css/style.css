@@ -1,0 +1,23 @@
+h1{
+    color: rgb(172, 89, 34);
+}
+h3{
+    color: rgb(26, 84, 122);
+}
+body{
+    background-color: rgb(140, 212, 212);
+}
+div{
+    column-fill: auto;
+    color: rgb(0, 0, 0);
+}
+h4{
+    color: black;
+}
+p{
+    color: rgb(0, 0, 0);
+}
+
+nav{
+    color: black;
+}
